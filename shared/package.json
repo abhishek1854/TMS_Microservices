@@ -1,0 +1,14 @@
+{
+  "name": "@tms/shared",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "index.js",
+  "dependencies": {
+    "amqplib": "^0.10.9",
+    "mongoose": "^9.1.1",
+    "redis": "^5.10.0",
+    "validator": "^13.15.26",
+    "winston": "^3.19.0"
+  }
+}
