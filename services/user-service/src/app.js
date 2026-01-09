@@ -1,16 +1,35 @@
-import express from "express";
-import cors from "cors";
+import dotenv from 'dotenv';
+dotenv.config();
+
+import express from 'express';
+import helmet from 'helmet';
+import cors from 'cors';
+
+import logger from './config/logger.js';
+import authRoutes from './routes/authRoutes.js';
+import { connectDB } from './config/db.js';
 
 const app = express();
 
+app.use(helmet());
 app.use(cors());
+app.use(express.json());
 
-app.get("/api/v1/users", (req, res) => {
-  res.send("User Service is running");
+connectDB();
+
+// Request logging
+app.use((req, res, next) => {
+  logger.debug(`${req.method} ${req.url}`);
+  next();
 });
 
-const PORT = process.env.PORT || 3001;
+app.use("/api/v1/users", authRoutes);
 
-app.listen(PORT, () => {
-  console.log(`User Service is running on port ${PORT}`);
+// Health check endpoint
+app.get('/health', (req, res) => {
+  res.status(200).json({ status: 'User Service is healthy' });
+});
+
+app.listen(process.env.PORT || 3001, () => {
+  logger.info(`User Service is running on port ${process.env.PORT || 3001}`);
 });

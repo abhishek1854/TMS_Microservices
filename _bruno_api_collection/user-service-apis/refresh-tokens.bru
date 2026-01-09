@@ -1,0 +1,22 @@
+meta {
+  name: refresh-tokens
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{api-gateway-base-url}}/api/v1/users/refresh-tokens
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTYxMTRiZDM2NGNlYTU3ZWNmODljODYiLCJpYXQiOjE3Njc5NzI2NTEsImV4cCI6MTc2ODU3NzQ1MX0.G_iXj1Ibz_PXEj_ychQQvT9TwwkTvIrlSbEovRVgRaM"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

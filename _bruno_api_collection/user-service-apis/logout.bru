@@ -1,0 +1,22 @@
+meta {
+  name: logout
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{api-gateway-base-url}}/api/v1/users/logout
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTYxMTRiZDM2NGNlYTU3ZWNmODljODYiLCJpYXQiOjE3Njc5NzQ3NTUsImV4cCI6MTc2ODU3OTU1NX0.J_JM9OZcDKzNiWWjyJaZbn8V_dM95-6f7pePyKENILg"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
